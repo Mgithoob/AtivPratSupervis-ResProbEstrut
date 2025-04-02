@@ -1,1 +1,2 @@
-# TDE2-Resolucao-de-Problemas-Estruturados
+# Atividade Prática Supervisionada
+# Resoluçâo de Problemas Estruturados em Computação
