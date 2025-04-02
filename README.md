@@ -1,2 +1,2 @@
 # Atividade Prática Supervisionada
-# Resoluçâo de Problemas Estruturados em Computação
+# Resolução de Problemas Estruturados em Computação
