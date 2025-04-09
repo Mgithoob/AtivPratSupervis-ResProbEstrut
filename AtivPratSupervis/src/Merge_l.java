@@ -16,7 +16,7 @@ public class Merge_l {
         Fila_l C = new Fila_l();
 
         // Loop que compara elementos de A e B antes de adicionar.
-        while(!(A.vazia() || B.vazia()))
+        while(!( A.vazia() || B.vazia() ))
         {
             // DEBUG
             System.out.println("DEBUG - Loop comparador  ------------");
@@ -34,29 +34,26 @@ public class Merge_l {
         {
             System.out.println("DEBUG - Fila A está vazia! ------------");
 
-            while ( !B.vazia() )
-            {
                 // DEBUG
                 System.out.println("DEBUG - Loop Fila A vazia  ------------");
                 B.imprimir(true); C.imprimir(true);
 
                 C.adicionar(B.retirar());
-            }
+
         }
         if (B.vazia())
         {
             System.out.println("DEBUG - Fila B está vazia! ------------");
             B.imprimir(true);
 
-            while ( !A.vazia() )
-            {
+
                 // DEBUG
                 System.out.println("DEBUG - Loop Fila B vazia  ------------");
                 System.out.println("Fila A:"); A.imprimir(true);
                 System.out.println("Fila C:"); C.imprimir(true);
 
                 C.adicionar(A.retirar());
-            }
+
         }
 
         // DEBUG
@@ -69,3 +66,4 @@ public class Merge_l {
     }
 
 }
+
