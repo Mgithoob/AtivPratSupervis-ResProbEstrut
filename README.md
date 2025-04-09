@@ -31,4 +31,4 @@
 
 Dentro do arquivo *Main.java*, terão testes comentados para cada questão. Descomentar, realizar teste, comentar novamente.
 
-*Observação: Em todos os códigos, o valor 0 para int é tratado como vazio.*
+*Observação: Em todos os códigos, o valor 0 (int) é tratado como vazio.*
