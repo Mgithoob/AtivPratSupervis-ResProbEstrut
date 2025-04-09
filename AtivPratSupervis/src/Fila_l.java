@@ -1,4 +1,5 @@
 // Fila dinâmica implementada com lista encadeada.
+
 public class Fila_l {
     ListaEncadeada.No comeco;
     ListaEncadeada.No fim;
@@ -18,15 +19,11 @@ public class Fila_l {
     // Insere objeto no fim da fila
     public void adicionar(int elemento)
     {
-        // caso para inicio
         if (vazia())
         {
             comeco.dado = elemento;
         }
-
-        }
         else dados.inserir(elemento);
-
     }
 
     // Retira objeto do começo da fila
@@ -41,11 +38,14 @@ public class Fila_l {
             return -1;
         }
         else {
-            elemento = dados[inicio];
-            dados[inicio] = 0;
-            // wrap
-            if ( (inicio + 1) >= MAX) inicio = 0;
-            else inicio++;
+            elemento = comeco.dado;
+            comeco = comeco.proximo;
+            dados.remover(0);
+
+            // Resetar ponteiro de fim
+            ListaEncadeada.No atual = comeco;
+            while (atual.proximo != comeco) atual = atual.proximo;
+            fim = atual;
 
             System.out.printf("Elemento removido: [%d]\n", elemento);
             return elemento;
@@ -82,4 +82,3 @@ public class Fila_l {
     }
 
 }
-
