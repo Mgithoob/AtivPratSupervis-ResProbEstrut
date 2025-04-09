@@ -1,4 +1,4 @@
-// Classe para a segunda parte do exercício 3.
+// Classe para a segunda parte da questão 3.
 // Usada para juntar duas filas estáticas que funcionam internamente com um vetor.
 
 public class Merge_v {
