@@ -20,11 +20,11 @@
 
 - *ListaEncadeada.java*
 - *Fila_l.java*
-- *Merge_l*
+- *Merge_l.java*
 
 #### Arquivos da Questão 3.2:
 - *Fila.java*
--  *Merge_v*
+-  *Merge_v.java*
 
 
 ### Instruções:
