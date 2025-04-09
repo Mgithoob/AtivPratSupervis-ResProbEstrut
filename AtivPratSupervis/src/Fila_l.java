@@ -7,13 +7,13 @@ public class Fila_l {
     ListaEncadeada dados;
 
     public Fila_l() {
-        ListaEncadeada lista = new ListaEncadeada();
+        this.dados = new ListaEncadeada();
         // Usando 0 para representar vazio.
-        lista.inserir(0);
-        lista.inserir(0);
-
-        comeco = lista.inicio;
-        fim = comeco.proximo;
+        this.dados.inserir(0);
+        this.comeco = dados.inicio;
+        this.dados.inserir(0);
+        this.fim = dados.inicio.proximo;
+        this.fim.proximo = this.comeco;
     }
 
     // Insere objeto no fim da fila
@@ -21,9 +21,33 @@ public class Fila_l {
     {
         if (vazia())
         {
-            comeco.dado = elemento;
+            if ((comeco != null) || (this.dados.inicio == null)) {
+                this.dados.inserir(0);
+            }
+            comeco = this.dados.inicio;
+
+            this.comeco.dado = elemento;
         }
-        else dados.inserir(elemento);
+        else {
+            this.dados.inserir(elemento);
+            comeco = comeco.proximo;
+
+            // Resetar ponteiro de fim
+            if (fim.dado == 0) {
+                ListaEncadeada.No procura = dados.inicio;
+                int contador = 0;
+
+                // procurar pos fim
+                while (procura.proximo != comeco) {
+                    procura = procura.proximo;
+                    contador++;
+                }
+                dados.remover(contador);
+
+                fim = procura;
+            }
+        }
+
     }
 
     // Retira objeto do começo da fila
@@ -37,15 +61,32 @@ public class Fila_l {
             imprimir(true);
             return -1;
         }
+        // Para lista de 1 elemento
+        else if (comeco == fim) {
+            elemento = comeco.dado;
+            this.dados.remover(0);
+            return elemento;
+        }
         else {
             elemento = comeco.dado;
             comeco = comeco.proximo;
-            dados.remover(0);
+            this.dados.remover(0);
+
 
             // Resetar ponteiro de fim
-            ListaEncadeada.No atual = comeco;
-            while (atual.proximo != comeco) atual = atual.proximo;
-            fim = atual;
+            if (fim.dado == 0) {
+                ListaEncadeada.No procura = dados.inicio;
+                int contador = 0;
+
+                // procurar pos fim
+                while (procura.proximo != comeco) {
+                    procura = procura.proximo;
+                    contador++;
+                }
+                dados.remover(contador);
+
+                fim = procura;
+            }
 
             System.out.printf("Elemento removido: [%d]\n", elemento);
             return elemento;
@@ -71,14 +112,17 @@ public class Fila_l {
     // Verifica se fila está vazia
     public boolean vazia()
     {
-        if (comeco.dado == 0) return true;
+        if ((comeco.dado == 0 || (comeco == null))) return true;
         else return false;
     }
 
     public void imprimir(boolean debug)
     {
-        dados.imprimir();
-        if (debug) { System.out.printf("Início: %d | Fim: %d\n\n", comeco.dado, fim.dado); }
+        this.dados.imprimir();
+        if (debug && ((comeco != null) && (fim != null))) {
+            System.out.printf("Início dado: %d | Fim dado: %d\n\n", comeco.dado, fim.dado);
+        }
     }
 
 }
+
