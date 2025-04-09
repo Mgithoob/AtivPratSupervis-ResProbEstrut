@@ -11,6 +11,10 @@ public class ListaEncadeada {
         }
     }
 
+    public ListaEncadeada(){
+
+    }
+
     No inicio = null;
 
     // Insire um elemento no final da lista.
@@ -19,20 +23,20 @@ public class ListaEncadeada {
         No novoNo = new No(elemento);
 
         // Caso lista vazia
-        if (inicio == null)
+        if (this.inicio == null)
         {
-            inicio = novoNo;
+            this.inicio = novoNo;
             novoNo.proximo = novoNo; // Aponta para ele mesmo
 
         // Caso geral
         } else {
-            No atual = inicio;
+            No atual = this.inicio;
 
-            while (atual.proximo != inicio) { atual = atual.proximo; }
+            while (atual.proximo != this.inicio) { atual = atual.proximo; }
 
             // Chegando na cauda:
             atual.proximo = novoNo;
-            novoNo.proximo = inicio;
+            novoNo.proximo = this.inicio;
 
         }
     }
@@ -44,28 +48,28 @@ public class ListaEncadeada {
         if (pos == 0)
         {
             // Lista com um elemento
-            if (inicio.proximo == inicio)
+            if (inicio.proximo == this.inicio)
             {
-                inicio.proximo = null;
-                inicio = null;
+                this.inicio.proximo = null;
+                this.inicio = null;
                 return;
             }
             else {
                 // Achar cauda
-                No atual = inicio;
-                while( atual.proximo != inicio ) {
+                No atual = this.inicio;
+                while( atual.proximo != this.inicio ) {
                     atual = atual.proximo;
                 }
 
-                atual.proximo = inicio.proximo;
-                inicio = atual.proximo;
+                atual.proximo = this.inicio.proximo;
+                this.inicio = atual.proximo;
                 return;
             }
         }
         // Caso geral, percorre lista.
-        No atual = inicio;
+        No atual = this.inicio;
         No anterior = null;
-        int contador = 1;
+        int contador = 0;
 
         while ((contador <= pos) && (atual.proximo != null))
         {
@@ -90,21 +94,21 @@ public class ListaEncadeada {
 
     public void imprimir()
     {
-        if (inicio == null) {
+        if (this.inicio == null) {
             System.out.print("Lista vazia. Sem dados para impressão.");
         }
 
-        No atual = inicio;
+        No atual = this.inicio;
         System.out.print("Lista: ");
-        if(atual.dado == 0) System.out.print("  |");
-        else System.out.printf(" %d |", atual.dado);
+        if (atual != null){
+            while ((atual.proximo != this.inicio) && (atual.proximo != null))
+            {
+                if(atual.dado == 0) System.out.print("  |");
+                else System.out.printf(" %d |", atual.dado);
+                atual = atual.proximo;
 
-        // Não imprime se for lista de um elemento.
-        while (atual.proximo != inicio)
-        {
-            if(atual.dado == 0) System.out.print("  |");
-            else System.out.printf(" %d |", atual.dado);
-            atual = atual.proximo;
+                if(atual == null) break;
+            }
         }
         System.out.println();
     }
