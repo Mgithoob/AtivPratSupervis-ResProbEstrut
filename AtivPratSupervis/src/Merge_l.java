@@ -1,4 +1,4 @@
-// Classe para a primeira parte do exercício 3.
+// Classe para a primeira parte da questão 3.
 // Usada para juntar duas filas dinâmicas que funcionam internamente com uma lista encadeada.
 
 public class Merge_l {
